@@ -13,6 +13,8 @@ func rootCmd() *cobra.Command {
 
 	cmd.AddCommand(initCmd())
 	cmd.AddCommand(buildCmd())
+	cmd.AddCommand(checkCmd())
+	cmd.AddCommand(pkgCmd())
 
 	return cmd
 }
