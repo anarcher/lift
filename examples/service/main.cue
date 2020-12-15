@@ -4,24 +4,24 @@ import "example.com/k8s"
 
 svc: k8s
 svc: config: {
-	name:  "fs"
-	image: "fs:v0.0.1"
+	name:  "helloworld"
+	image: "helloworld:v0.0.1"
 
 	livenessProbe:  probe
 	readinessProbe: probe
 
-	envSpec: "FD_MONITOR_TRACER_DATADOG_HOST": {
+	envSpec: "MONITOR_TRACER_DATADOG_HOST": {
 		valueFrom: fieldRef: fieldPath: "status.hostIP"
 	}
 	env: "TEST": "true"
 
 	irsa: "IRSA"
 
-	configMap: "fs": {
+	configMap: "helloworld": {
 		ENV: "alpha"
 		RGN: "kr"
 	}
-	envFrom: configMsp: ["fs"]
+	envFrom: configMsp: ["helloworld"]
 	ingress: host: "example.com"
 }
 
